@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Stratoos — El sistema operativo del aprendizaje · Smartmind</title>
+<meta name="description" content="Siete productos SaaS AI-native que multiplican tu ecosistema formativo. Sin migraciones. Sin perder lo que ya tienes."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1B6B3A;
+  --green-dark:#134d2a;
+  --green-mid:#2a8a4e;
+  --green-light:#e8f5ee;
+  --green-xlight:#f2faf5;
+  --cream:#F5F4F0;
+  --cream-dark:#eceae3;
+  --ink:#0f110e;
+  --ink-2:#383b34;
+  --ink-3:#71756b;
+  --ink-4:#a8aca2;
+  --border:rgba(0,0,0,0.09);
+  --border-mid:rgba(0,0,0,0.15);
+  --white:#ffffff;
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'DM Serif Display',Georgia,serif;
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-sans);background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:16px}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(245,244,240,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 28px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-logo-mark{width:30px;height:30px;background:var(--green-light);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.nav-logo-mark svg{width:16px;height:16px}
+.nav-brand{font-weight:600;font-size:14px;letter-spacing:-0.01em;color:var(--ink)}
+.nav-sep{color:var(--ink-4);font-weight:300;margin:0 2px}
+.nav-product{color:var(--green);font-weight:600;font-size:14px}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:13.5px;color:var(--ink-3)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);padding:8px 18px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-sans);transition:background .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--green-dark)}
+
+/* ── HERO ── */
+.hero{max-width:1120px;margin:0 auto;padding:88px 28px 72px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:24px}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block}
+.hero-headline{font-family:var(--font-serif);font-size:clamp(42px,6.5vw,72px);line-height:1.04;letter-spacing:-0.025em;color:var(--ink);max-width:820px;font-weight:400}
+.hero-headline em{color:var(--green);font-style:italic}
+.hero-sub{font-size:18px;color:var(--ink-2);max-width:580px;margin-top:22px;line-height:1.65;font-weight:300}
+.hero-actions{display:flex;align-items:center;gap:12px;margin-top:36px;flex-wrap:wrap}
+.btn-primary{background:var(--green);color:#fff;border:none;border-radius:var(--radius-md);padding:14px 28px;font-size:15px;font-weight:500;cursor:pointer;font-family:var(--font-sans);transition:background .15s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--green-dark)}
+.btn-ghost{border:1px solid var(--border-mid);background:transparent;border-radius:var(--radius-md);padding:13px 24px;font-size:15px;font-weight:400;cursor:pointer;font-family:var(--font-sans);color:var(--ink-2);transition:border-color .15s,color .15s}
+.btn-ghost:hover{border-color:var(--ink-3);color:var(--ink)}
+
+/* ── STATS ── */
+.stats-wrap{max-width:1120px;margin:0 auto;padding:0 28px 72px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border:0.5px solid var(--border-mid);border-radius:var(--radius-md);overflow:hidden;background:var(--border)}
+.stat-cell{background:var(--white);padding:28px 24px;text-align:center}
+.stat-num{font-family:var(--font-serif);font-size:40px;color:var(--green-dark);line-height:1;font-weight:400}
+.stat-label{font-size:12px;color:var(--ink-3);margin-top:10px;line-height:1.5}
+
+/* ── SECTION BASE ── */
+.section{padding:80px 28px}
+.container{max-width:1120px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.eyebrow-light{color:rgba(255,255,255,.4)}
+.h2{font-family:var(--font-serif);font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-0.02em;font-weight:400;margin-bottom:18px}
+.h2-white{color:#fff}
+.lead{font-size:17px;color:var(--ink-2);max-width:560px;line-height:1.65;font-weight:300}
+.lead-light{color:rgba(255,255,255,.65)}
+
+/* ── PROBLEM ── */
+.problem-bg{background:var(--ink)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
+.problem-card{border:0.5px solid rgba(255,255,255,.1);border-radius:var(--radius-md);padding:28px 24px}
+.problem-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px}
+.problem-text{font-size:14.5px;color:rgba(255,255,255,.8);line-height:1.65}
+.premise-box{margin-top:40px;max-width:680px;border:0.5px solid rgba(255,255,255,.12);border-radius:var(--radius-md);padding:28px 32px}
+.premise-label{display:inline-block;background:var(--green);color:#fff;font-size:11px;font-weight:600;border-radius:5px;padding:3px 10px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px}
+.premise-text{font-family:var(--font-serif);font-size:22px;color:#fff;line-height:1.45;font-style:italic;font-weight:400}
+
+/* ── STUDIOS OVERVIEW ── */
+.studios-bg{background:var(--white)}
+.studios-intro{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-bottom:48px}
+.studios-pills{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:48px}
+.pill{border-radius:var(--radius-sm);padding:18px 10px;border:0.5px solid var(--border-mid);text-align:center;transition:border-color .15s,background .15s}
+.pill:hover{border-color:var(--green);background:var(--green-xlight)}
+.pill-num{font-size:10px;font-weight:700;color:var(--ink-4);letter-spacing:.06em;margin-bottom:6px}
+.pill-name{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.pill-verb{font-size:11px;color:var(--green);font-style:italic}
+
+/* ── STUDIO ROWS ── */
+.studio-rows{display:flex;flex-direction:column;gap:1px}
+.srow{display:grid;grid-template-columns:220px 1fr 140px;gap:28px;align-items:start;padding:22px 24px;border-radius:var(--radius-md);border:0.5px solid transparent;transition:background .15s,border-color .15s}
+.srow:hover{background:var(--cream);border-color:var(--border-mid)}
+.srow-head{display:flex;align-items:flex-start;gap:12px}
+.srow-badge{width:26px;height:26px;border-radius:50%;border:1px solid var(--border-mid);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--ink-3);flex-shrink:0;margin-top:3px}
+.srow-name{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.srow-verbs{font-size:11px;color:var(--green);font-weight:500;letter-spacing:.02em}
+.srow-desc{font-size:13.5px;color:var(--ink-2);line-height:1.65}
+.srow-kpi{text-align:right}
+.srow-kpi-num{font-family:var(--font-serif);font-size:28px;color:var(--green-dark);line-height:1}
+.srow-kpi-label{font-size:10.5px;color:var(--ink-4);margin-top:5px;line-height:1.4}
+
+/* ── STUDIO DEEP SECTIONS ── */
+.deep-section{padding:72px 28px;border-top:0.5px solid var(--border)}
+.deep-section:nth-of-type(odd){background:var(--cream)}
+.deep-section:nth-of-type(even){background:var(--white)}
+.deep-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:48px}
+.deep-caps{display:flex;flex-direction:column;gap:24px;margin-top:32px}
+.deep-cap{border-left:2px solid var(--green-light);padding-left:18px}
+.deep-cap-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px}
+.deep-cap-text{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.deep-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.deep-kpi{background:var(--cream);border-radius:var(--radius-sm);padding:20px;text-align:center}
+.deep-kpi-num{font-family:var(--font-serif);font-size:34px;color:var(--green-dark);line-height:1}
+.deep-kpi-label{font-size:11px;color:var(--ink-3);margin-top:8px;line-height:1.4}
+.pipeline-steps{display:flex;flex-direction:column;gap:0;margin-top:32px;border:0.5px solid var(--border-mid);border-radius:var(--radius-md);overflow:hidden}
+.pipeline-step{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start;padding:16px 20px;border-bottom:0.5px solid var(--border);background:var(--white)}
+.pipeline-step:last-child{border-bottom:none}
+.pipeline-step:hover{background:var(--green-xlight)}
+.pipeline-num{font-family:var(--font-serif);font-size:20px;color:var(--green);line-height:1.2;font-weight:400}
+.pipeline-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.pipeline-desc{font-size:12.5px;color:var(--ink-3);line-height:1.55}
+.params-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.param-tag{background:var(--green-xlight);border:0.5px solid rgba(27,107,58,.2);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--green-dark);font-weight:500}
+.role-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.role-card{background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-md);padding:24px}
+.role-card-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:10px}
+.role-card-text{font-size:13px;color:var(--ink-2);line-height:1.6}
+
+/* ── COMPARISON TABLE ── */
+.compare-bg{background:var(--white)}
+.compare-table{width:100%;border-collapse:collapse;margin-top:40px;border:0.5px solid var(--border-mid);border-radius:var(--radius-md);overflow:hidden}
+.compare-table th{padding:14px 20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);text-align:left;background:var(--cream-dark);border-bottom:0.5px solid var(--border-mid)}
+.compare-table th:last-child{color:var(--green)}
+.compare-table td{padding:13px 20px;font-size:13.5px;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.5}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:var(--green-xlight)}
+.compare-table td:first-child{font-weight:600;color:var(--ink);width:22%}
+.compare-table td:nth-child(2){color:var(--ink-3)}
+.compare-table td:last-child{color:var(--ink)}
+.check{color:var(--green);font-weight:700;margin-right:4px}
+
+/* ── ECOSYSTEM ── */
+.eco-bg{background:var(--ink)}
+.eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px}
+.eco-card{border:0.5px solid rgba(255,255,255,.1);border-radius:var(--radius-md);padding:24px}
+.eco-num{font-size:10px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.eco-name{font-size:15px;font-weight:600;color:#fff;margin-bottom:8px}
+.eco-verbs{font-size:11px;color:var(--green-mid);margin-bottom:12px;font-style:italic}
+.eco-desc{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6}
+.eco-dims{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:40px}
+.eco-dim{border:0.5px solid rgba(255,255,255,.1);border-radius:var(--radius-md);padding:22px}
+.eco-dim-num{font-family:var(--font-serif);font-size:28px;color:rgba(255,255,255,.25);margin-bottom:10px}
+.eco-dim-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:8px}
+.eco-dim-text{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6}
+.eco-dim-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.eco-tag{font-size:11px;color:var(--green-mid);border:0.5px solid rgba(42,138,78,.4);border-radius:20px;padding:3px 10px}
+
+/* ── PRINCIPLES ── */
+.principles-bg{background:var(--cream)}
+.principles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:48px}
+.principle-card{background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-md);padding:28px}
+.principle-icon{width:38px;height:38px;background:var(--green-xlight);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.principle-icon svg{width:20px;height:20px;stroke:var(--green);fill:none;stroke-width:1.5}
+.principle-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.principle-text{font-size:13.5px;color:var(--ink-2);line-height:1.65}
+
+/* ── HOW IT WORKS ── */
+.how-bg{background:var(--white)}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:26px;left:8%;right:8%;height:1px;background:var(--border-mid);z-index:0}
+.step{position:relative;padding:0 16px;text-align:center;z-index:1}
+.step-dot{width:52px;height:52px;border-radius:50%;background:var(--white);border:1px solid var(--border-mid);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--font-serif);font-size:20px;color:var(--green-dark)}
+.step-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.step-desc{font-size:12.5px;color:var(--ink-3);line-height:1.6}
+.deploy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.deploy-card{background:var(--cream);border-radius:var(--radius-md);padding:24px}
+.deploy-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--green);margin-bottom:8px}
+.deploy-text{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+
+/* ── SECURITY ── */
+.security-bg{background:var(--cream)}
+.security-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
+.security-card{background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-md);padding:22px}
+.security-card svg{width:18px;height:18px;stroke:var(--ink-3);fill:none;stroke-width:1.5;margin-bottom:14px;display:block}
+.security-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.security-text{font-size:12.5px;color:var(--ink-3);line-height:1.6}
+
+/* ── PROOF ── */
+.proof-bg{background:var(--white)}
+.proof-logos{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.proof-chip{border:0.5px solid var(--border-mid);background:var(--cream);border-radius:7px;padding:9px 18px;font-size:13px;font-weight:500;color:var(--ink-2)}
+.proof-quote{background:var(--cream);border-left:3px solid var(--green);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:28px 32px;margin-top:40px;max-width:760px}
+.proof-quote-text{font-family:var(--font-serif);font-size:20px;color:var(--ink);line-height:1.5;font-style:italic;font-weight:400}
+.proof-quote-cite{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-top:14px}
+
+/* ── CTA ── */
+.cta-bg{background:var(--green-dark);padding:88px 28px}
+.cta-bg .eyebrow{color:rgba(255,255,255,.35)}
+.cta-bg .h2{color:#fff}
+.cta-bg .lead{color:rgba(255,255,255,.65)}
+.cta-form{display:flex;gap:8px;margin-top:32px;flex-wrap:wrap}
+.cta-form input{flex:1;min-width:180px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:#fff;border-radius:var(--radius-md);padding:13px 18px;font-size:14px;font-family:var(--font-sans);outline:none;transition:border-color .15s}
+.cta-form input::placeholder{color:rgba(255,255,255,.35)}
+.cta-form input:focus{border-color:rgba(255,255,255,.5)}
+.btn-white{background:#fff;color:var(--green-dark);border:none;border-radius:var(--radius-md);padding:13px 24px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font-sans);transition:opacity .15s;white-space:nowrap}
+.btn-white:hover{opacity:.9}
+.cta-note{font-size:12px;color:rgba(255,255,255,.35);margin-top:12px}
+.cta-guarantees{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
+.cta-guar{border:0.5px solid rgba(255,255,255,.1);border-radius:var(--radius-md);padding:22px}
+.cta-guar-num{font-family:var(--font-serif);font-size:32px;color:rgba(255,255,255,.9);margin-bottom:8px}
+.cta-guar-text{font-size:13px;color:rgba(255,255,255,.45);line-height:1.5}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:48px 28px 32px}
+.footer-inner{max-width:1120px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;padding-bottom:32px;border-bottom:0.5px solid rgba(255,255,255,.08)}
+.footer-brand{font-weight:600;font-size:15px;color:#fff;margin-bottom:5px}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,.3);max-width:320px;line-height:1.5}
+.footer-links{display:flex;gap:28px;font-size:13px;color:rgba(255,255,255,.35)}
+.footer-links a:hover{color:rgba(255,255,255,.75)}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.2);margin-top:24px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .nav-links{display:none}
+  .studios-intro{grid-template-columns:1fr}
+  .studios-pills{grid-template-columns:repeat(4,1fr)}
+  .deep-grid{grid-template-columns:1fr}
+  .problem-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-grid::before{display:none}
+  .eco-grid{grid-template-columns:repeat(2,1fr)}
+  .eco-dims{grid-template-columns:1fr}
+  .principles-grid{grid-template-columns:1fr}
+  .srow{grid-template-columns:1fr;gap:10px}
+  .srow-kpi{text-align:left}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .role-cards{grid-template-columns:1fr}
+  .deep-kpis{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .hero{padding:56px 20px 48px}
+  .section{padding:56px 20px}
+  .studios-pills{grid-template-columns:repeat(2,1fr)}
+  .cta-form{flex-direction:column}
+  .cta-guarantees{grid-template-columns:1fr}
+  .security-grid{grid-template-columns:1fr}
+  .deploy-grid{grid-template-columns:1fr}
+  .deep-kpis{grid-template-columns:1fr}
+}
+
+.srow{cursor:pointer}
+.srow-name a{color:var(--ink);text-decoration:none;transition:color .15s}
+.srow-name a:hover{color:var(--green)}
+.srow-name a::after{content:' ↗';font-size:11px;color:var(--ink-4);margin-left:5px}
+.srow-name a:hover::after{color:var(--green)}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 36 36" fill="none"><path d="M14 6c-3 0-5 2.2-5 5 0 .6.1 1.1.3 1.6C7.4 13.4 6 15.3 6 17.6c0 1.9 1 3.6 2.5 4.5C8.2 22.7 8 23.4 8 24c0 2.8 2.2 5 5 5 1 0 2-.3 2.8-.8.6.5 1.4.8 2.2.8V6c-1.3 0-2.5.5-3.4 1.3C14.4 6.5 14.2 6 14 6z" stroke="#1B6B3A" stroke-width="1.6" stroke-linejoin="round"/><path d="M22 6c3 0 5 2.2 5 5 0 .6-.1 1.1-.3 1.6 1.9.8 3.3 2.7 3.3 5 0 1.9-1 3.6-2.5 4.5.3.6.5 1.3.5 1.9 0 2.8-2.2 5-5 5-1 0-2-.3-2.8-.8-.6.5-1.4.8-2.2.8" stroke="#1B6B3A" stroke-width="1.6" stroke-linejoin="round"/><circle cx="14" cy="18" r="1.4" fill="#1B6B3A"/><circle cx="22" cy="14" r="1.4" fill="#1B6B3A"/></svg>
+      </div>
+      <span class="nav-brand">Smartmind</span><span class="nav-sep"> · </span><span class="nav-product">Stratoos</span>
+    </div>
+    <div class="nav-links">
+      <a href="#studios">Los Studios</a>
+      <a href="#ecosistema">Ecosistema</a>
+      <a href="#como-funciona">Implantación</a>
+      <a href="#vs">Comparativa</a>
+      <a href="#clientes">Clientes</a>
+    </div>
+    <button class="nav-cta" onclick="document.getElementById('cta-section').scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('demo-email').focus();},600)">Solicitar demo</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="background:var(--cream)">
+  <div class="hero">
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Sistema SaaS AI-native · Smartmind</div>
+    <h1 class="hero-headline">Capas y capas de inteligencia<br/>AI-native que <em>multiplican</em><br/>tu ecosistema formativo.</h1>
+    <p class="hero-sub">Un sistema de siete productos donde cada uno es el mejor de su clase — y que juntos hacen a tu equipo de L&D imparable. Sin migraciones. Sin sustituir lo que ya funciona. Solo multiplicarlo.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('cta-section').scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('demo-email').focus();},600)">
+        Solicitar demo gratuita
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+      <button class="btn-ghost" onclick="document.getElementById('studios').scrollIntoView({behavior:'smooth'})">Ver los 7 Studios →</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-wrap">
+  <div class="stats-grid">
+    <div class="stat-cell"><div class="stat-num">7</div><div class="stat-label">Productos SaaS AI-native, cada uno el mejor de su clase</div></div>
+    <div class="stat-cell"><div class="stat-num">−90%</div><div class="stat-label">Tiempo de producción de contenido formativo</div></div>
+    <div class="stat-cell"><div class="stat-num">−70%</div><div class="stat-label">Tiempo de gestión del tutor</div></div>
+    <div class="stat-cell"><div class="stat-num">0</div><div class="stat-label">Migraciones de plataforma requeridas</div></div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section problem-bg">
+  <div class="container">
+    <p class="eyebrow eyebrow-light">El problema real</p>
+    <h2 class="h2 h2-white" style="max-width:680px">Tu tecnología educativa no está rota. Está <em style="color:rgba(255,255,255,.45);font-style:italic">infrautilizada.</em></h2>
+    <p class="lead lead-light">El error habitual es intentar resolverlo migrando. Cambiar de plataforma, romper lo que funcionaba, asumir meses de implantación. Stratoos parte de la premisa contraria: la inteligencia se añade encima de lo que ya existe, no en lugar de ello.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-tag">Producción de contenido</div>
+        <div class="problem-text">Un curso tarda semanas. Múltiples rondas de revisión, versiones, aprobaciones. El contenido llega tarde o ya está desactualizado cuando se publica.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-tag">Gestión de tutores</div>
+        <div class="problem-text">El tutor entra en tres plataformas, revisa logs uno a uno y escribe mensajes manualmente. La IA podría hacer el 70% de ese trabajo — pero no la tiene.</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-tag">Evaluación sin evidencia</div>
+        <div class="problem-text">La formación se mide por porcentaje de completado. Ese número no dice si alguien aprendió de verdad ni si la competencia se transfiere al puesto de trabajo.</div>
+      </div>
+    </div>
+    <div class="premise-box">
+      <div class="premise-label">La premisa de Stratoos</div>
+      <p class="premise-text">"La inteligencia se añade encima de lo que ya existe, no en lugar de ello."</p>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIOS OVERVIEW -->
+<section class="section studios-bg" id="studios">
+  <div class="container">
+    <div class="studios-intro">
+      <div>
+        <p class="eyebrow">Los siete Studios</p>
+        <h2 class="h2">Un sistema. Siete productos. El ciclo completo cubierto.</h2>
+      </div>
+      <div>
+        <p class="lead" style="margin-top:8px">Cada Studio resuelve con precisión una parte del ciclo formativo. Puedes empezar por el que resuelve tu necesidad más urgente y ampliar a tu ritmo. No es un monolito que adoptar entero.</p>
+      </div>
+    </div>
+
+    <div class="studios-pills">
+      <div class="pill"><div class="pill-num">01</div><div class="pill-name"><a href="#studio-core" style="color:inherit;text-decoration:none">Core</a></div><div class="pill-verb">Centralizar</div></div>
+      <div class="pill"><div class="pill-num">02</div><div class="pill-name"><a href="#studio-content" style="color:inherit;text-decoration:none">Content</a></div><div class="pill-verb">Generar</div></div>
+      <div class="pill"><div class="pill-num">03</div><div class="pill-name"><a href="#studio-design" style="color:inherit;text-decoration:none">Design</a></div><div class="pill-verb">Diseñar</div></div>
+      <div class="pill"><div class="pill-num">04</div><div class="pill-name"><a href="#studio-play" style="color:inherit;text-decoration:none">Play</a></div><div class="pill-verb">Sumergir</div></div>
+      <div class="pill"><div class="pill-num">05</div><div class="pill-name"><a href="#studio-live" style="color:inherit;text-decoration:none">Live</a></div><div class="pill-verb">Tutorizar</div></div>
+      <div class="pill"><div class="pill-num">06</div><div class="pill-name"><a href="#studio-mind" style="color:inherit;text-decoration:none">Mind</a></div><div class="pill-verb">Medir</div></div>
+      <div class="pill"><div class="pill-num">07</div><div class="pill-name"><a href="#studio-learn" style="color:inherit;text-decoration:none">Learn</a></div><div class="pill-verb">Escalar</div></div>
+    </div>
+
+    <div class="studio-rows">
+      <div class="srow">
+        <div class="srow-head"><div class="srow-badge">01</div><div><div class="srow-name"><a href="#studio-core">Studio Core</a></div><div class="srow-verbs">Centralizar · Seleccionar · Componer</div></div></div>
+        <div class="srow-desc">El núcleo semántico del ecosistema. Un sistema RAG que entiende qué contenido existe en la organización, evita la duplicación y la obsolescencia, y sabe exactamente qué pieza necesita cada persona en cada momento. No es un repositorio — es la inteligencia que convierte un volumen inabarcable de contenido en el recorrido exacto para cada alumno. El tejido conectivo que une los siete productos.</div>
+        <div class="srow-kpi"><div class="srow-kpi-num">∞</div><div class="srow-kpi-label">Fuentes y formatos conectables</div></div>
+      </div>
+      <div class="srow">
+        <div class="srow-head"><div class="srow-badge">02</div><div><div class="srow-name"><a href="#studio-content">Studio Content</a></div><div class="srow-verbs">Generar</div></div></div>
+        <div class="srow-desc">El generador de cursos IA más completo del mercado. Un pipeline de 10 etapas con verificación factual en fuentes reales y validación normativa integrada (BOE, EUR-Lex, ISO a nivel de artículo) que lleva del brief al curso en menos de 10 minutos. Lo que antes requería un equipo instruccional completo durante semanas.</div>
+        <div class="srow-kpi"><div class="srow-kpi-num">−90%</div><div class="srow-kpi-label">Tiempo de producción</div></div>
+      </div>
+      <div class="srow">
+        <div class="srow-head"><div class="srow-badge">03</div><div><div class="srow-name"><a href="#studio-design">Studio Design</a></div><div class="srow-verbs">Diseñar · Publicar</div></div></div>
+        <div class="srow-desc">La herramienta de autor que no deja de sorprender. Por primera vez la IA genera contenido educativo visualmente rico y pedagógicamente coherente — y el autor tiene control total sobre el diseño, la interactividad y la publicación. Todos los modelos del mercado, y muchos más. Publicación en SCORM, xAPI y HTML5 responsivo.</div>
+        <div class="srow-kpi"><div class="srow-kpi-num">0</div><div class="srow-kpi-label">Compromiso entre velocidad y calidad</div></div>
+      </div>
+      <div class="srow">
+        <div class="srow-head"><div class="srow-badge">04</div><div><div class="srow-name"><a href="#studio-play">Studio Play</a></div><div class="srow-verbs">Sumergir · Transformar</div></div></div>
+        <div class="srow-desc">Por primera vez el alumno no completa un curso: lo protagoniza. Aventuras contextuales ramificadas donde el contenido formativo se convierte en el tejido de una historia, y role plays avanzados sin opciones predefinidas donde se evalúa el criterio real en situación auténtica. Genera evidencia cognitiva con base científica (Bloom, xAPI) para Studio Mind.</div>
+        <div class="srow-kpi"><div class="srow-kpi-num">0</div><div class="srow-kpi-label">Opciones predefinidas en el role play</div></div>
+      </div>
+      <div class="srow">
+        <div class="srow-head"><div class="srow-badge">05</div><div><div class="srow-name"><a href="#studio-live">Studio Live</a></div><div class="srow-verbs">Activar · Tutorizar · Dinamizar</div></div></div>
+        <div class="srow-desc">El motor de productividad educativa AI-native. Se construye sobre tu LMS actual —Moodle, Canvas, Blackboard o cualquier otro— y lo transforma en una experiencia de alta productividad para tutores, alumnos y dirección. Comunicaciones unificadas, detección proactiva de alumnos en riesgo, asistente por voz y analítica en tiempo real. La IA propone; el tutor decide, siempre.</div>
+        <div class="srow-kpi"><div class="srow-kpi-num">−70%</div><div class="srow-kpi-label">Tiempo de gestión del tutor</div></div>
+      </div>
+      <div class="srow">
+        <div class="srow-head"><div class="srow-badge">06</div><div><div class="srow-name"><a href="#studio-mind">Studio Mind</a></div><div class="srow-verbs">Medir · Personalizar</div></div></div>
+        <div class="srow-desc">El motor de evaluación cognitiva con base científica. No mide completado: certifica competencia demostrada. Cinco scores (Cognitive Achievement, Capability Development, Behavioral Evidence, Transfer Index, Operational Impact) y tres estados de certificación acumulativos, sobre Bloom, Evidence-Centered Design y Kirkpatrick. Evidencia auditable que conecta formación con KPIs de negocio.</div>
+        <div class="srow-kpi"><div class="srow-kpi-num">5</div><div class="srow-kpi-label">Scores de competencia verificable</div></div>
+      </div>
+      <div class="srow">
+        <div class="srow-head"><div class="srow-badge">07</div><div><div class="srow-name"><a href="#studio-learn">Studio Learn</a></div><div class="srow-verbs">Aprender · Escalar</div></div></div>
+        <div class="srow-desc">La plataforma de formación continua B2B que personaliza rutas en tiempo real. Funciona como un streaming, pero entiende a quién sirve: las rutas no son genéricas, son las que Studio Mind ha determinado que cada persona necesita en este momento. Acceso ilimitado, experiencias inmersivas de Studio Play en el catálogo, engagement tipo Duolingo y analítica real de aprendizaje.</div>
+        <div class="srow-kpi"><div class="srow-kpi-num">∞</div><div class="srow-kpi-label">Acceso ilimitado por suscripción B2B</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO CORE DEEP -->
+<section class="deep-section" style="background:var(--cream)">
+  <div class="container">
+    <p class="eyebrow" id="studio-core">Studio Core — En profundidad</p>
+    <h2 class="h2" style="max-width:680px">Todo el conocimiento de tu organización. Entendido, seleccionado y compuesto para cada persona.</h2>
+    <p class="lead" style="margin-bottom:16px">Almacenar no basta. Studio Core es el núcleo semántico del ecosistema Stratoos: entiende qué existe, evita la duplicación y la obsolescencia, y sabe exactamente qué pieza necesita cada persona en cada momento. No es un repositorio — es la inteligencia que convierte un volumen inabarcable de contenido en el recorrido exacto para cada alumno.</p>
+    <div style="background:var(--white);border-left:3px solid var(--green);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 20px;margin-bottom:40px;max-width:720px">
+      <p style="font-size:14px;color:var(--ink-2);line-height:1.6;font-style:italic">En una organización que genera contenido a gran escala, el problema no es la falta de material — es no saber qué existe, dónde está ni qué usar en cada momento. Studio Core resuelve eso desde la raíz.</p>
+    </div>
+
+    <div class="deep-grid">
+      <div>
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:20px">Cómo funciona — RAG aplicado al aprendizaje organizacional</p>
+        <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:20px;line-height:1.6">Studio Core no busca por palabras clave. Entiende el contexto de cada necesidad formativa y recupera la pieza más precisa para ese perfil, ese rol y ese momento. Sobre una estructura semántica compleja, compone secuencias personalizadas con sentido pedagógico real.</p>
+        <div class="pipeline-steps">
+          <div class="pipeline-step"><div class="pipeline-num">①</div><div><div class="pipeline-title">Centralización semántica</div><div class="pipeline-desc">Miles de contenidos —vídeos, lecciones, microcontenidos, audios, documentos— organizados sobre una estructura que entiende de qué trata cada pieza, cómo se relaciona con otras y cuándo fue producida. No una carpeta con archivos: una base de conocimiento con significado.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">②</div><div><div class="pipeline-title">Recuperación aumentada por contexto</div><div class="pipeline-desc">El sistema identifica la pieza precisa para cada consulta considerando el perfil del alumno, su rol, su historial de aprendizaje y el objetivo formativo. La recuperación no es semántica superficial — es inferencia contextual sobre la base completa de conocimiento de la organización.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">③</div><div><div class="pipeline-title">Composición de recorridos personalizados</div><div class="pipeline-desc">Studio Core no entrega contenidos sueltos. Compone secuencias con sentido pedagógico — rutas que tienen progresión, coherencia y propósito — adaptadas a lo que cada persona necesita recorrer en este momento para alcanzar su objetivo.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">④</div><div><div class="pipeline-title">Gobierno del dato formativo</div><div class="pipeline-desc">Evita la duplicación, detecta la obsolescencia y mantiene la coherencia del portfolio. El equipo de L&D sabe en todo momento qué tiene, qué falta, qué hay que actualizar y qué está siendo consumido. El conocimiento organizacional deja de ser opaco.</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="deep-kpis" style="margin-bottom:20px">
+          <div class="deep-kpi"><div class="deep-kpi-num">∞</div><div class="deep-kpi-label">Conocimiento organizacional gobernado</div></div>
+          <div class="deep-kpi"><div class="deep-kpi-num">1</div><div class="deep-kpi-label">Núcleo semántico para los 7 Studios</div></div>
+          <div class="deep-kpi"><div class="deep-kpi-num">0</div><div class="deep-kpi-label">Migración de LMS / LXP / HRIS</div></div>
+        </div>
+
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:14px">Las 6 capacidades de Studio Core</p>
+        <div class="deep-caps" style="margin-bottom:24px">
+          <div class="deep-cap"><div class="deep-cap-title">Estructura semántica compleja</div><div class="deep-cap-text">El sistema entiende de qué trata cada contenido, cómo se relaciona con otros, qué nivel cognitivo requiere y cuándo fue producido. No metadatos — comprensión real del conocimiento almacenado.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">RAG — Recuperación aumentada</div><div class="deep-cap-text">No busca por palabras clave. Entiende el contexto de cada necesidad y recupera la pieza más precisa para ese perfil, ese rol y ese momento formativo concreto.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Composición de rutas con sentido pedagógico</div><div class="deep-cap-text">No entrega contenidos sueltos — compone secuencias con progresión y propósito. Cada recorrido está diseñado para que el alumno avance de forma coherente hacia su objetivo.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Detección de duplicación y obsolescencia</div><div class="deep-cap-text">Identifica automáticamente cuando un contenido está duplicado o desactualizado y alerta al equipo de L&D antes de que llegue al alumno.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Orquestación del ecosistema Stratoos</div><div class="deep-cap-text">Studio Core conecta los siete productos entre sí. Es el tejido conectivo que garantiza que la inteligencia de uno enriquece a los demás y que el conocimiento fluye donde se necesita.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Integración hacia afuera</div><div class="deep-cap-text">Sirve contenido y personalización a cualquier LMS, LXP o HRIS del cliente. El ecosistema formativo existente no se abandona — se potencia con la inteligencia de Core.</div></div>
+        </div>
+
+        <div style="background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-md);padding:22px">
+          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:6px">Studio Core en el sistema Stratoos</p>
+          <p style="font-size:13px;color:var(--ink-3);font-style:italic;margin-bottom:14px;line-height:1.5">"Studio Core convierte un volumen inabarcable de contenido en el recorrido exacto para cada persona. Y lo sirve a todos los productos del ecosistema — y a cualquier plataforma externa — sin fricciones."</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:13px;color:var(--ink-2)"><strong style="color:var(--green)">→ Studio Content:</strong> Alimenta la generación de cursos con el conocimiento base de la organización.</div>
+            <div style="font-size:13px;color:var(--ink-2)"><strong style="color:var(--green)">→ Studio Play:</strong> Sirve el contenido fuente que Play convierte en aventuras y role plays.</div>
+            <div style="font-size:13px;color:var(--ink-2)"><strong style="color:var(--green)">→ Studio Mind:</strong> Recibe los perfiles cognitivos para personalizar qué contenido componer a continuación.</div>
+            <div style="font-size:13px;color:var(--ink-2)"><strong style="color:var(--green)">→ Studio Learn:</strong> Alimenta el catálogo con contenidos organizados y rutas compuestas con sentido.</div>
+            <div style="font-size:13px;color:var(--ink-2)"><strong style="color:var(--green)">→ Studio Live:</strong> Proporciona el contexto de contenido para enriquecer la dinamización del tutor.</div>
+            <div style="font-size:13px;color:var(--ink-2)"><strong style="color:var(--green)">→ LMS / LXP / HRIS:</strong> Integración directa con los sistemas existentes. Contenido y personalización hacia afuera sin fricciones.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO CONTENT DEEP -->
+<section class="deep-section" style="background:var(--white)">
+  <div class="container">
+    <p class="eyebrow" id="studio-content">Studio Content — En profundidad</p>
+    <h2 class="h2" style="max-width:680px">El generador de cursos IA más completo del mercado. Del brief al curso en menos de diez minutos.</h2>
+    <div class="deep-grid">
+      <div>
+        <p class="lead">Un pipeline de 10 etapas que automatiza lo que antes requería un equipo instruccional completo durante semanas. No es un generador de texto — es producción de formación de principio a fin, con verificación factual real y validación normativa integrada.</p>
+        <p style="font-size:13.5px;color:var(--ink-3);margin-top:16px;margin-bottom:24px">Parámetros configurables por curso y por módulo:</p>
+        <div class="params-grid">
+          <span class="param-tag">Nivel de dificultad</span><span class="param-tag">Tono y registro</span><span class="param-tag">Densidad conceptual</span><span class="param-tag">Perfil del alumno</span><span class="param-tag">Sector y contexto legal</span><span class="param-tag">Tipo de ejemplos</span><span class="param-tag">Enfoque práctico/teórico</span><span class="param-tag">Idioma y variante regional</span><span class="param-tag">Normativa aplicable</span><span class="param-tag">Modelo de IA</span><span class="param-tag">Fuentes de referencia</span><span class="param-tag">Profundidad técnica</span>
+        </div>
+        <div style="margin-top:28px;background:var(--cream);border-radius:var(--radius-md);padding:20px">
+          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:10px">Independencia de proveedor IA</p>
+          <p style="font-size:13px;color:var(--ink-2);line-height:1.6">Vía LiteLLM + OpenRouter selecciona el modelo más adecuado para cada tarea: Claude para razonamiento profundo, GPT-4o para síntesis, Gemini para multimodal. Cambia de proveedor sin rehacer nada. 100% trazabilidad de costes.</p>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:16px">El pipeline de 10 etapas</p>
+        <div class="pipeline-steps">
+          <div class="pipeline-step"><div class="pipeline-num">①</div><div><div class="pipeline-title">Análisis de la necesidad formativa</div><div class="pipeline-desc">Desde un prompt, PDF o documento, infiere objetivos pedagógicos, audiencia y nivel de dificultad.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">②</div><div><div class="pipeline-title">Arquitectura del curso</div><div class="pipeline-desc">Módulos, submódulos y bloques con coherencia de secuencia y progresión de dificultad probada.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">③</div><div><div class="pipeline-title">Generación parametrizada</div><div class="pipeline-desc">Más de una decena de variables configurables: tono, densidad, sector, estilo narrativo y más.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">④</div><div><div class="pipeline-title">Verificación factual en fuentes reales</div><div class="pipeline-desc">Contrasta cada afirmación con búsquedas en tiempo real. Marca automáticamente lo sin respaldo.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">⑤</div><div><div class="pipeline-title">Validación normativa integrada</div><div class="pipeline-desc">Cruza contra BOE, EUR-Lex e ISO a nivel de artículo. Señala módulos con riesgo normativo.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">⑥</div><div><div class="pipeline-title">Coherencia entre módulos</div><div class="pipeline-desc">Revisa que cada módulo sea consistente con los anteriores en terminología, nivel y narrativa.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">⑦</div><div><div class="pipeline-title">Generación paralela multi-nivel</div><div class="pipeline-desc">Hasta 10 submódulos simultáneos, 4 secciones en paralelo y 2 drafts competitivos por sección. ×5 más rápido.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">⑧</div><div><div class="pipeline-title">Revisión de vigencia normativa</div><div class="pipeline-desc">Extrae normas citadas a nivel de artículo y las contrasta. Marca desactualizados para regeneración.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">⑨</div><div><div class="pipeline-title">Control de costes por etapa</div><div class="pipeline-desc">Tokens, coste estimado, proveedor y usuario registrados. Dashboard de costes con límites por organización.</div></div></div>
+          <div class="pipeline-step"><div class="pipeline-num">⑩</div><div><div class="pipeline-title">Entrega lista para Studio Design</div><div class="pipeline-desc">Contenido estructurado, verificado y validado transferido directamente para diseño y publicación.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO DESIGN DEEP -->
+<section class="deep-section" style="background:var(--cream)">
+  <div class="container">
+    <p class="eyebrow" id="studio-design">Studio Design — En profundidad</p>
+    <h2 class="h2" style="max-width:640px">La herramienta de autor que no deja de sorprender. La IA produce — el autor tiene el control total.</h2>
+    <div class="deep-grid">
+      <div>
+        <p class="lead">Por primera vez, la IA hace el trabajo y el autor conserva el control total sobre el diseño y la producción. Generación automática a nivel profesional sobre plantillas con base pedagógica, y un editor que replica todos los modelos del mercado y añade muchos más.</p>
+        <div class="deep-caps" style="margin-top:28px">
+          <div class="deep-cap"><div class="deep-cap-title">Generación automática AI-native</div><div class="deep-cap-text">Convierte el contenido de Studio Content — o cualquier material de referencia — en piezas educativas visualmente ricas y pedagógicamente coherentes. A un nivel que no se consigue manualmente.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Editor visual de máxima potencia</div><div class="deep-cap-text">Bloques, interacciones, multimedia, animaciones y lógica de navegación. Cuestionarios, simulaciones, casos ramificados, drag & drop y evaluaciones adaptativas — todo sin código.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Diseño de marca y estilo institucional</div><div class="deep-cap-text">Sistema de design tokens que garantiza coherencia visual en todos los cursos. Paleta de colores, tipografía, iconografía y estilo propios aplicados en un clic.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Publicación multi-formato</div><div class="deep-cap-text">SCORM 1.2, SCORM 2004, xAPI y HTML5 responsivo. Compatible con cualquier LMS del mercado. Optimizado para escritorio, tablet y móvil sin trabajo adicional.</div></div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:16px">Ámbitos de uso</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+          <div style="background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-sm);padding:16px 18px"><div style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:4px">Formación corporativa</div><div style="font-size:13px;color:var(--ink-3)">Onboarding, compliance, desarrollo de habilidades, PRL. Producción a escala con coherencia de marca.</div></div>
+          <div style="background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-sm);padding:16px 18px"><div style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:4px">Educación profesional y FP</div><div style="font-size:13px;color:var(--ink-3)">Ciclos formativos, certificaciones y programas profesionalizantes con rigor curricular.</div></div>
+          <div style="background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-sm);padding:16px 18px"><div style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:4px">Universidad y postgrado</div><div style="font-size:13px;color:var(--ink-3)">Materiales docentes, asignaturas online, másteres. Nivel académico con experiencia moderna.</div></div>
+        </div>
+        <div style="background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-md);overflow:hidden">
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px">
+            <tr style="background:var(--cream-dark)"><th style="padding:10px 14px;text-align:left;font-weight:700;color:var(--ink-3);font-size:11px;text-transform:uppercase;letter-spacing:.06em">Capacidad</th><th style="padding:10px 14px;text-align:center;color:var(--green);font-size:11px;text-transform:uppercase;letter-spacing:.06em">Studio Design</th><th style="padding:10px 14px;text-align:center;color:var(--ink-3);font-size:11px;text-transform:uppercase;letter-spacing:.06em">Mercado</th></tr>
+            <tr style="border-top:0.5px solid var(--border)"><td style="padding:9px 14px;color:var(--ink-2)">Generación automática IA</td><td style="text-align:center;padding:9px 14px;color:var(--green);font-weight:600">Nivel profesional</td><td style="text-align:center;padding:9px 14px;color:var(--ink-4)">Limitada o ausente</td></tr>
+            <tr style="border-top:0.5px solid var(--border)"><td style="padding:9px 14px;color:var(--ink-2)">Modelos de contenido</td><td style="text-align:center;padding:9px 14px;color:var(--green);font-weight:600">Todos + más</td><td style="text-align:center;padding:9px 14px;color:var(--ink-4)">Catálogo cerrado</td></tr>
+            <tr style="border-top:0.5px solid var(--border)"><td style="padding:9px 14px;color:var(--ink-2)">Diseño pedagógico</td><td style="text-align:center;padding:9px 14px;color:var(--green);font-weight:600">En cada plantilla</td><td style="text-align:center;padding:9px 14px;color:var(--ink-4)">Layout visual</td></tr>
+            <tr style="border-top:0.5px solid var(--border)"><td style="padding:9px 14px;color:var(--ink-2)">Ámbito universitario</td><td style="text-align:center;padding:9px 14px;color:var(--green);font-weight:600">Diseñado para ello</td><td style="text-align:center;padding:9px 14px;color:var(--ink-4)">Solo corporativo</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO PLAY DEEP -->
+<section class="deep-section" style="background:var(--white)">
+  <div class="container">
+    <p class="eyebrow" id="studio-play">Studio Play — En profundidad</p>
+    <h2 class="h2" style="max-width:640px">Por primera vez, el alumno no completa un curso. Lo protagoniza.</h2>
+    <div class="deep-grid">
+      <div>
+        <p class="lead">Studio Play transforma los contenidos formativos en experiencias de aprendizaje contextual: el alumno deja de ser espectador y pasa a ser protagonista de una historia que recorre, decide y resuelve. La diferencia entre saber repetir un concepto y saber aplicarlo.</p>
+        <div class="deep-caps" style="margin-top:28px">
+          <div class="deep-cap"><div class="deep-cap-title">Aventuras contextuales ramificadas</div><div class="deep-cap-text">El contenido formativo se convierte en el tejido de una historia. Una lectura se vuelve el briefing previo; un cuestionario, la puerta que solo se abre con el conocimiento adecuado; un caso práctico, el obstáculo real que hay que superar para avanzar. El recorrido ramifica según el perfil y el desempeño.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Role play avanzado sin opciones predefinidas</div><div class="deep-cap-text">Escenas abiertas donde el alumno se enfrenta a dilemas, negociaciones y diagnósticos reales con un interlocutor que reacciona a lo que dice y hace. No hay opciones cerradas. Lo que se evalúa es el criterio — la capacidad de actuar con inteligencia bajo condiciones auténticas.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Evidencia cognitiva con base científica</div><div class="deep-cap-text">Cada interacción genera enunciados xAPI etiquetados por nivel Bloom. La evaluación emerge de la experiencia, no del examen. Studio Mind los recoge, parametriza y convierte en perfil cognitivo de precisión.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Transformación del contenido existente</div><div class="deep-cap-text">No requiere crear desde cero. Toma los materiales ya existentes —vídeos, textos, cuestionarios, casos— y los reubica dentro de la arquitectura de la experiencia.</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--cream);border-radius:var(--radius-md);padding:24px;margin-bottom:16px">
+          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:16px">E-learning clásico vs. Studio Play</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--ink-3)">El alumno <strong>consume</strong> información</div>
+              <div style="background:var(--green-xlight);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--green-dark)">El alumno <strong>protagoniza</strong> una aventura</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--ink-3)">Avanza por <strong>obligación</strong> o inercia</div>
+              <div style="background:var(--green-xlight);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--green-dark)">Avanza porque el <strong>conocimiento abre</strong> el siguiente paso</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--ink-3)">Cuestionarios que miden <strong>memoria</strong></div>
+              <div style="background:var(--green-xlight);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--green-dark)">Role play que mide <strong>criterio real</strong> en situación</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--ink-3)">El recorrido es <strong>igual para todos</strong></div>
+              <div style="background:var(--green-xlight);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--green-dark)">Ramifica según <strong>perfil y desempeño</strong></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--ink-3)">Evaluación al final, <strong>sin evidencia real</strong></div>
+              <div style="background:var(--green-xlight);border-radius:var(--radius-sm);padding:12px;font-size:12.5px;color:var(--green-dark)">Evidencia <strong>científica xAPI</strong> desde la experiencia</div>
+            </div>
+          </div>
+        </div>
+        <div class="deep-kpis">
+          <div class="deep-kpi"><div class="deep-kpi-num">2</div><div class="deep-kpi-label">Tipologías complementarias: aventura + role play</div></div>
+          <div class="deep-kpi"><div class="deep-kpi-num">xAPI</div><div class="deep-kpi-label">Evidencia etiquetada por nivel Bloom</div></div>
+          <div class="deep-kpi"><div class="deep-kpi-num">0</div><div class="deep-kpi-label">Opciones predefinidas en role play avanzado</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO LIVE DEEP -->
+<section class="deep-section" style="background:var(--cream)">
+  <div class="container">
+    <p class="eyebrow" id="studio-live">Studio Live — En profundidad</p>
+    <h2 class="h2" style="max-width:640px">La capa AI-native sobre tu plataforma educativa. Sin migraciones. Sin perder datos.</h2>
+    <div class="deep-grid">
+      <div>
+        <p class="lead">Studio Live se construye sobre tu LMS actual —Moodle, Canvas, Blackboard o cualquier otro— y lo transforma en una experiencia de alta productividad para tutores, alumnos y dirección. Sin migraciones. Sin perder datos. Solo multiplicar lo que ya tienes.</p>
+        <div class="role-cards" style="grid-template-columns:1fr;gap:10px;margin-top:24px">
+          <div class="role-card"><div class="role-card-title">Tutor y dinamizador</div><div class="role-card-text">Toda la actividad de todos los alumnos en todas las plataformas, en una sola bandeja inteligente. La IA detecta quién necesita atención, redacta el mensaje y el tutor decide si lo envía.</div></div>
+          <div class="role-card"><div class="role-card-title">Alumno</div><div class="role-card-text">Un único acceso para todos los cursos en cualquier plataforma. El asistente Stratoos gestiona por voz, los recordatorios son inteligentes y la experiencia es la que el alumno actual espera.</div></div>
+          <div class="role-card"><div class="role-card-title">Coordinación y dirección</div><div class="role-card-text">Vista consolidada de todas las plataformas y empresas. KPIs en tiempo real sin depender de nadie técnico. Auditoría completa de cada acción del equipo.</div></div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:16px">Tareas que cambian por completo</p>
+        <div style="border:0.5px solid var(--border-mid);border-radius:var(--radius-md);overflow:hidden">
+          <table style="width:100%;border-collapse:collapse;font-size:12.5px">
+            <tr style="background:var(--cream-dark)"><th style="padding:10px 14px;text-align:left;color:var(--ink-3);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em">Tarea</th><th style="padding:10px 14px;text-align:left;color:var(--ink-3);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em">Sin Live</th><th style="padding:10px 14px;text-align:left;color:var(--green);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em">Con Live</th></tr>
+            <tr style="border-top:0.5px solid var(--border)"><td style="padding:9px 14px;font-weight:600;color:var(--ink)">3 plataformas LMS</td><td style="padding:9px 14px;color:var(--ink-3)">3 logins, 3 buzones</td><td style="padding:9px 14px;color:var(--ink)">1 bandeja unificada</td></tr>
+            <tr style="border-top:0.5px solid var(--border)"><td style="padding:9px 14px;font-weight:600;color:var(--ink)">Alumno en riesgo</td><td style="padding:9px 14px;color:var(--ink-3)">Revisar logs manualmente</td><td style="padding:9px 14px;color:var(--ink)">Alerta proactiva + mensaje IA</td></tr>
+            <tr style="border-top:0.5px solid var(--border)"><td style="padding:9px 14px;font-weight:600;color:var(--ink)">Envío grupal</td><td style="padding:9px 14px;color:var(--ink-3)">BCC manual, sin seguimiento</td><td style="padding:9px 14px;color:var(--ink)">Compositor IA + envío diferido</td></tr>
+            <tr style="border-top:0.5px solid var(--border)"><td style="padding:9px 14px;font-weight:600;color:var(--ink)">Crear debate en foro</td><td style="padding:9px 14px;color:var(--ink-3)">Entrar, navegar, escribir</td><td style="padding:9px 14px;color:var(--ink)">"Stratoos: crear debate sobre…" por voz</td></tr>
+            <tr style="border-top:0.5px solid var(--border)"><td style="padding:9px 14px;font-weight:600;color:var(--ink)">Estado de la formación</td><td style="padding:9px 14px;color:var(--ink-3)">Informes dispersos, exportaciones</td><td style="padding:9px 14px;color:var(--ink)">Dashboard tiempo real, exportable</td></tr>
+          </table>
+        </div>
+        <div class="deep-kpis" style="margin-top:16px">
+          <div class="deep-kpi"><div class="deep-kpi-num">−70%</div><div class="deep-kpi-label">Tiempo de gestión de comunicaciones</div></div>
+          <div class="deep-kpi"><div class="deep-kpi-num">15min</div><div class="deep-kpi-label">Para conectar cada plataforma LMS</div></div>
+          <div class="deep-kpi"><div class="deep-kpi-num">0</div><div class="deep-kpi-label">Migraciones requeridas</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO MIND DEEP -->
+<section class="deep-section" style="background:var(--white)">
+  <div class="container">
+    <p class="eyebrow" id="studio-mind">Studio Mind — En profundidad</p>
+    <h2 class="h2" style="max-width:640px">Tu LMS te dice quién completó el curso. Studio Mind te dice quién sabe hacer el trabajo.</h2>
+    <div class="deep-grid">
+      <div>
+        <p class="lead">Evaluación cognitiva con base científica. No se pregunta lo que alguien sabe — se observa lo que hace. Cinco scores y tres estados de certificación acumulativos sobre Bloom, Evidence-Centered Design y Kirkpatrick. Evidencia auditable y exportable.</p>
+        <div class="deep-caps" style="margin-top:28px">
+          <div class="deep-cap"><div class="deep-cap-title">D1 · Cognitive Achievement</div><div class="deep-cap-text">¿Ha alcanzado el nivel de comprensión esperado? Retención, precisión y calibración metacognitiva.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">D2 · Capability Development</div><div class="deep-cap-text">¿Ha desarrollado la capacidad objetivo? Calidad por rúbrica, con peso creciente según nivel Bloom.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">D3 · Behavioral Evidence</div><div class="deep-cap-text">¿Cómo actúa al usar la capacidad? Autonomía, recuperación de error, secuencia y consistencia.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">D4 · Transfer Index</div><div class="deep-cap-text">¿La aplica en el trabajo real? Adopción, frecuencia, calidad y durabilidad a 30/60/90 días.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">D5 · Operational Impact</div><div class="deep-cap-text">¿Genera resultados medibles? Movimiento del KPI frente a línea base con atribución.</div></div>
+        </div>
+        <div style="margin-top:20px;padding:16px 18px;background:var(--green-xlight);border-radius:var(--radius-sm);border:0.5px solid rgba(27,107,58,.2)">
+          <p style="font-size:13px;color:var(--green-dark);line-height:1.6"><strong>Conjuntivo, no compensatorio.</strong> Una dimensión alta no rescata otra baja. Cada nivel debe superar su propio umbral para que la competencia se considere verificada.</p>
+        </div>
+      </div>
+      <div>
+        <div class="deep-kpis" style="margin-bottom:20px">
+          <div class="deep-kpi"><div class="deep-kpi-num">5</div><div class="deep-kpi-label">Scores de competencia verificable</div></div>
+          <div class="deep-kpi"><div class="deep-kpi-num">3</div><div class="deep-kpi-label">Estados de certificación acumulativos</div></div>
+          <div class="deep-kpi"><div class="deep-kpi-num">xAPI</div><div class="deep-kpi-label">Evidencia auditable y exportable a SIEM</div></div>
+        </div>
+        <div style="background:var(--cream);border-radius:var(--radius-md);padding:22px">
+          <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:14px">El modelo de competencias verificables</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;display:flex;align-items:start;gap:10px"><span style="font-size:11px;font-weight:700;color:var(--green);background:var(--green-xlight);border-radius:4px;padding:2px 7px;white-space:nowrap">01</span><div><div style="font-size:13px;font-weight:600;color:var(--ink)">Declarada</div><div style="font-size:12px;color:var(--ink-3)">La organización define qué competencia necesita y qué evidencia la demuestra.</div></div></div>
+            <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;display:flex;align-items:start;gap:10px"><span style="font-size:11px;font-weight:700;color:var(--green);background:var(--green-xlight);border-radius:4px;padding:2px 7px;white-space:nowrap">02</span><div><div style="font-size:13px;font-weight:600;color:var(--ink)">Demostrada</div><div style="font-size:12px;color:var(--ink-3)">El alumno la ejerce en Studio Play. Cada acción genera una traza de evidencia.</div></div></div>
+            <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;display:flex;align-items:start;gap:10px"><span style="font-size:11px;font-weight:700;color:var(--green);background:var(--green-xlight);border-radius:4px;padding:2px 7px;white-space:nowrap">03</span><div><div style="font-size:13px;font-weight:600;color:var(--ink)">Certificada</div><div style="font-size:12px;color:var(--ink-3)">Studio Mind evalúa si la evidencia supera los umbrales de las tres primeras dimensiones.</div></div></div>
+            <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;display:flex;align-items:start;gap:10px"><span style="font-size:11px;font-weight:700;color:var(--green);background:var(--green-xlight);border-radius:4px;padding:2px 7px;white-space:nowrap">04</span><div><div style="font-size:13px;font-weight:600;color:var(--ink)">Transferida</div><div style="font-size:12px;color:var(--ink-3)">La persona aplica la competencia en su puesto real. La organización lo confirma.</div></div></div>
+            <div style="background:var(--white);border-radius:var(--radius-sm);padding:12px;display:flex;align-items:start;gap:10px"><span style="font-size:11px;font-weight:700;color:var(--green);background:var(--green-xlight);border-radius:4px;padding:2px 7px;white-space:nowrap">05</span><div><div style="font-size:13px;font-weight:600;color:var(--ink)">Impacto</div><div style="font-size:12px;color:var(--ink-3)">La competencia genera un resultado medible en un KPI de negocio.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO LEARN DEEP -->
+<section class="deep-section" style="background:var(--cream)">
+  <div class="container">
+    <p class="eyebrow" id="studio-learn">Studio Learn — En profundidad</p>
+    <h2 class="h2" style="max-width:640px">Aprendizaje sin límites. No es acceso a contenidos — es el recorrido exacto para cada persona.</h2>
+    <div class="deep-grid">
+      <div>
+        <p class="lead">Studio Learn funciona como un streaming — pero entiende a quién sirve. Las rutas no son genéricas: son las que Studio Mind ha determinado que cada persona necesita recorrer en este momento, con este perfil, para este objetivo.</p>
+        <div class="deep-caps" style="margin-top:28px">
+          <div class="deep-cap"><div class="deep-cap-title">Acceso ilimitado B2B</div><div class="deep-cap-text">Una suscripción organizacional que da acceso sin techo a todos los contenidos — incluidas las aventuras contextuales y role plays avanzados de Studio Play. Sin límites por empleado.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Personalización por Studio Mind en tiempo real</div><div class="deep-cap-text">Las rutas no son genéricas ni estáticas. Studio Mind actualiza el recorrido de cada persona en tiempo real según su perfil cognitivo, sus scores y su avance en la competencia.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Analítica detallada de toda la interacción</div><div class="deep-cap-text">No porcentajes de completado — inteligencia real de aprendizaje. Qué consume cada persona, cómo avanza, dónde se detiene y qué evidencia genera. Datos para actuar.</div></div>
+          <div class="deep-cap"><div class="deep-cap-title">Engagement tipo Duolingo</div><div class="deep-cap-text">Gamificación, retos y dinamización que mantienen el hábito de aprendizaje. El aprendizaje continuo requiere consistencia — Learn la genera con mecánicas de engagement probadas.</div></div>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);margin-bottom:16px">Para cada rol de la organización</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-sm);padding:18px"><div style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:6px">Para el empleado</div><div style="font-size:13px;color:var(--ink-2);line-height:1.6">Acceso ilimitado a formación de calidad, en el momento que lo necesita, en el formato más adecuado para él. Una experiencia que no parece obligación.</div></div>
+          <div style="background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-sm);padding:18px"><div style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:6px">Para el Director de Formación / L&D</div><div style="font-size:13px;color:var(--ink-2);line-height:1.6">Analítica real, rutas adaptativas y evidencia de competencia. Gestiona la complejidad del aprendizaje a escala sin añadir complejidad operativa.</div></div>
+          <div style="background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-sm);padding:18px"><div style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:6px">Para el Director de RRHH</div><div style="font-size:13px;color:var(--ink-2);line-height:1.6">El aprendizaje continuo deja de ser una promesa y se convierte en datos. Qué capacidades se están desarrollando, a qué velocidad, con qué evidencia para decisiones de talento.</div></div>
+          <div style="background:var(--white);border:0.5px solid var(--border-mid);border-radius:var(--radius-sm);padding:18px"><div style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:6px">Para dirección de negocio</div><div style="font-size:13px;color:var(--ink-2);line-height:1.6">Los cinco scores de Studio Mind conectan el aprendizaje continuo de Learn con resultados operativos verificables. Una inversión en formación que genera retorno medible.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="section eco-bg" id="ecosistema">
+  <div class="container">
+    <p class="eyebrow eyebrow-light">El ecosistema</p>
+    <h2 class="h2 h2-white" style="max-width:640px">Cuatro multiplicadores que convierten tu L&D en una máquina AI-native.</h2>
+    <p class="lead lead-light">Los siete Studios no son siete herramientas sueltas — se agrupan en cuatro transformaciones que cubren el ciclo formativo completo.</p>
+    <div class="eco-dims">
+      <div class="eco-dim">
+        <div class="eco-dim-num">01</div>
+        <div class="eco-dim-title">Creación a otro nivel</div>
+        <div class="eco-dim-text">De semanas a minutos. Del contenido que se consume a la experiencia que se vive. Studio Play es el punto más alto — aventuras y role plays que hacen memorable todo lo que se crea — sostenido por Content y Design.</div>
+        <div class="eco-dim-tags"><span class="eco-tag">Studio Content</span><span class="eco-tag">Studio Design</span><span class="eco-tag">Studio Play</span></div>
+      </div>
+      <div class="eco-dim">
+        <div class="eco-dim-num">02</div>
+        <div class="eco-dim-title">Conocimiento de precisión</div>
+        <div class="eco-dim-text">Del porcentaje de completado al juicio de competencia certificado. Cinco scores, tres estados acumulativos, base científica verificable. Sabes si tu organización ha aprendido — con evidencia que lo demuestra.</div>
+        <div class="eco-dim-tags"><span class="eco-tag">Studio Mind</span><span class="eco-tag">Studio Play</span></div>
+      </div>
+      <div class="eco-dim">
+        <div class="eco-dim-num">03</div>
+        <div class="eco-dim-title">Nueva dimensión docente</div>
+        <div class="eco-dim-text">El tutor deja de gestionar para acompañar. Menos bandeja de entrada, más impacto en el alumno que lo necesita en el momento exacto. La IA propone — el tutor decide, siempre.</div>
+        <div class="eco-dim-tags"><span class="eco-tag">Studio Live</span><span class="eco-tag">Studio Mind</span></div>
+      </div>
+      <div class="eco-dim">
+        <div class="eco-dim-num">04</div>
+        <div class="eco-dim-title">Aprendizaje ilimitado</div>
+        <div class="eco-dim-text">Studio Core organiza el conocimiento y compone el recorrido exacto. Studio Learn lo sirve como acceso ilimitado, personalizado por Mind, con experiencias de Play. La plataforma que entiende lo que hay y lo entrega a medida.</div>
+        <div class="eco-dim-tags"><span class="eco-tag">Studio Learn</span><span class="eco-tag">Studio Core</span><span class="eco-tag">Studio Mind</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-bg" id="como-funciona">
+  <div class="container">
+    <p class="eyebrow">Implantación</p>
+    <h2 class="h2">Operativo en días, no en meses.</h2>
+    <p class="lead">El onboarding más rápido del mercado para una plataforma de esta potencia. Sin disrupciones. Sin proyectos de implantación interminables. Sin consultoras de cambio.</p>
+    <div class="steps-grid">
+      <div class="step"><div class="step-dot">①</div><div class="step-title">Conectas tu plataforma</div><div class="step-desc">Plugin en tu LMS sin tocar el core. Un token de servicio y listo. 15 minutos por plataforma.</div></div>
+      <div class="step"><div class="step-dot">②</div><div class="step-title">Los usuarios se vinculan</div><div class="step-desc">Los existentes se enlazan automáticamente por email. Los nuevos se crean desde Stratoos con credenciales de marca.</div></div>
+      <div class="step"><div class="step-dot">③</div><div class="step-title">Configuras y arrancas</div><div class="step-desc">Brand kit, idiomas, política de notificaciones e integración de email (SMTP o Microsoft Graph). Todo en un panel.</div></div>
+      <div class="step"><div class="step-dot">④</div><div class="step-title">Productividad total</div><div class="step-desc">En menos de 14 días el equipo opera con plena productividad. Sin proyectos, sin formaciones largas.</div></div>
+    </div>
+    <div class="deploy-grid">
+      <div class="deploy-card"><div class="deploy-label">SaaS gestionado</div><div class="deploy-text">Infraestructura Smartmind. Monitorización 24/7 y backups diarios. Sin gestión técnica por tu parte.</div></div>
+      <div class="deploy-card"><div class="deploy-label">On-premise</div><div class="deploy-text">Docker en tu infraestructura. Control total de datos y soberanía. Para requisitos legales estrictos (banca, salud, sector público).</div></div>
+      <div class="deploy-card"><div class="deploy-label">Híbrido</div><div class="deploy-text">Backend propio, frontend CDN gestionado. Equilibrio entre coste operativo y control de datos.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section class="section security-bg">
+  <div class="container">
+    <p class="eyebrow">Seguridad y cumplimiento</p>
+    <h2 class="h2" style="max-width:560px">Nivel enterprise. Listo para entornos educativos exigentes.</h2>
+    <p class="lead">Diseñado desde el primer día para organizaciones con requisitos de seguridad estrictos — banca, salud, universidad pública y sector regulado.</p>
+    <div class="security-grid">
+      <div class="security-card"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><div class="security-title">Cifrado AES-256-GCM</div><div class="security-text">Tokens cifrados en reposo. Clave rotable sin downtime. Backups con clave independiente.</div></div>
+      <div class="security-card"><svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 01-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 011-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 011.52 0C14.51 3.81 17 5 19 5a1 1 0 011 1z"/></svg><div class="security-title">TLS 1.3 + HSTS</div><div class="security-text">Cifrado obligatorio en tránsito. OCSP stapling, Let's Encrypt automatizado. WSS para WebSockets.</div></div>
+      <div class="security-card"><svg viewBox="0 0 24 24"><path d="m16 11 2 2 4-4"/><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><div class="security-title">Sesiones server-side</div><div class="security-text">3 horas con renovación. Cookies HttpOnly · Secure · SameSite. OAuth2 opcional.</div></div>
+      <div class="security-card"><svg viewBox="0 0 24 24"><path d="M6 22a2 2 0 01-2-2V4a2 2 0 012-2h8l6 6v12a2 2 0 01-2 2z"/><path d="M14 2v6h6"/></svg><div class="security-title">Auditoría completa</div><div class="security-text">Log con actor + payload + timestamp. Retención configurable. Exportable a SIEM externo.</div></div>
+      <div class="security-card"><svg viewBox="0 0 24 24"><path d="M4 22V4a1 1 0 01.4-.8A6 6 0 018 2c3 0 5 2 7.333 2a5.6 5.6 0 003.467-.8A1 1 0 0120 4v10a1 1 0 01-.4.8A6 6 0 0116 16c-3 0-5-2-8-2a6 6 0 00-4 1.528"/></svg><div class="security-title">RGPD-ready</div><div class="security-text">Derecho al olvido implementado. Datos académicos y operativos tratados por separado. DPA disponible.</div></div>
+      <div class="security-card"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2.062 12.348a1 1 0 010-.696 10.75 10.75 0 0119.876 0 1 1 0 010 .696 10.75 10.75 0 01-19.876 0"/><circle cx="12" cy="12" r="3"/></svg><div class="security-title">WCAG AA</div><div class="security-text">Accesibilidad institucional certificada. Dark mode nativo. Multi-idioma out-of-the-box.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section compare-bg" id="vs">
+  <div class="container">
+    <p class="eyebrow">Stratoos vs. lo que tienes ahora</p>
+    <h2 class="h2" style="max-width:580px">No es una mejora incremental. Es un cambio de categoría.</h2>
+    <p class="lead">La diferencia no está en las features — está en la premisa de diseño: inteligencia añadida encima de lo que ya existe, no en lugar de ello.</p>
+    <table class="compare-table">
+      <thead><tr><th>Tarea</th><th>Sin Stratoos</th><th>Con Stratoos</th></tr></thead>
+      <tbody>
+        <tr><td>Producir un curso nuevo</td><td>2–6 semanas de producción manual con equipo instruccional</td><td><span class="check">✓</span>Brief → curso verificado y normativo en menos de 10 minutos</td></tr>
+        <tr><td>Gestión de 3 plataformas LMS</td><td>3 logins, 3 buzones, 3 ventanas abiertas en paralelo</td><td><span class="check">✓</span>1 bandeja unificada con Studio Live, sin migraciones</td></tr>
+        <tr><td>Detectar alumno en riesgo</td><td>Revisar logs uno a uno manualmente en cada plataforma</td><td><span class="check">✓</span>Alerta proactiva con mensaje IA redactado y listo para revisar</td></tr>
+        <tr><td>Evaluar competencia real</td><td>Porcentaje de completado y nota de examen de opción múltiple</td><td><span class="check">✓</span>5 scores de competencia certificada con Studio Mind</td></tr>
+        <tr><td>Demostrar ROI de la formación</td><td>Informes de actividad sin correlación con resultados de negocio</td><td><span class="check">✓</span>KPI de negocio atribuido a competencia certificada (D5 de Mind)</td></tr>
+        <tr><td>Contenido del conocimiento organizacional</td><td>Repositorio opaco, duplicados, obsolescencias indetectables</td><td><span class="check">✓</span>Studio Core: RAG semántico con gobierno del dato formativo</td></tr>
+        <tr><td>Experiencia de aprendizaje del empleado</td><td>Catálogo genérico, rutas iguales para todos, sin engagement</td><td><span class="check">✓</span>Rutas personalizadas por Mind, experiencias Play, engagement Duolingo</td></tr>
+        <tr><td>Puesta en marcha</td><td>Meses de proyecto de implantación y consultoras de cambio</td><td><span class="check">✓</span>Operativo en menos de 14 días, sin disrupciones</td></tr>
+        <tr><td>Migración de datos y cursos</td><td>Riesgo, coste, pérdida de histórico y meses de trabajo</td><td><span class="check">✓</span>Cero migraciones — se construye sobre lo que ya tienes</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="section principles-bg">
+  <div class="container">
+    <p class="eyebrow">Por qué Stratoos</p>
+    <h2 class="h2" style="max-width:600px">Lo que ninguna herramienta de IA suelta puede ofrecer.</h2>
+    <div class="principles-grid">
+      <div class="principle-card"><div class="principle-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="principle-title">No sustituye: multiplica</div><div class="principle-text">Se integra sobre el stack actual, le aporta inteligencia AI-native y devuelve al equipo el tiempo que hoy consume en trabajo repetitivo. No compite con el LMS — lo potencia. Sin lock-in, sin perder lo que ya funciona.</div></div>
+      <div class="principle-card"><div class="principle-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="principle-title">Sin lock-in de ningún tipo</div><div class="principle-text">Estándares abiertos —SCORM y xAPI—, independencia de proveedor de IA y propiedad de los datos por parte del cliente. El sistema crea valor, no dependencia. Cambia de proveedor de IA sin rehacer nada.</div></div>
+      <div class="principle-card"><div class="principle-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div class="principle-title">Rigor pedagógico verificable</div><div class="principle-text">Bloom, Evidence-Centered Design, Kirkpatrick, constructivismo, memoria y carga cognitiva. Detrás de cada producto hay diseño instruccional sólido y base científica verificable — no tecnología por la tecnología.</div></div>
+      <div class="principle-card"><div class="principle-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div class="principle-title">Seguridad enterprise desde el día 1</div><div class="principle-text">AES-256-GCM, TLS 1.3, RGPD-ready, WCAG AA y auditoría completa exportable a SIEM. Diseñado para banca, salud, universidad pública y sector regulado desde el primer día, no añadido a posteriori.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section proof-bg" id="clientes">
+  <div class="container">
+    <p class="eyebrow">Organizaciones que confían en Smartmind</p>
+    <h2 class="h2">Con el respaldo de quienes saben.</h2>
+    <div style="margin-top:28px">
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-4);margin-bottom:12px">Grandes corporaciones</p>
+      <div class="proof-logos"><div class="proof-chip">Vodafone</div><div class="proof-chip">Meliá Hotels</div><div class="proof-chip">Iberostar</div><div class="proof-chip">Amundi</div><div class="proof-chip">Endesa</div><div class="proof-chip">Prosegur</div><div class="proof-chip">Correos</div></div>
+    </div>
+    <div style="margin-top:24px">
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-4);margin-bottom:12px">Líderes en formación</p>
+      <div class="proof-logos"><div class="proof-chip">Femxa</div><div class="proof-chip">Aspasia</div><div class="proof-chip">Adams</div></div>
+    </div>
+    <div class="proof-quote">
+      <p class="proof-quote-text">"Sustituimos cinco pestañas por una. Los tutores recuperan dos horas diarias y los alumnos llegan a contestar foros que antes no veían."</p>
+      <p class="proof-quote-cite">Director de formación — Programa de FP digital</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-bg" id="cta-section">
+  <div class="container">
+    <p class="eyebrow">Siguiente paso</p>
+    <h2 class="h2">¿Listo para ver lo que Stratoos hace con lo que ya tienes?</h2>
+    <p class="lead">Te mostramos el sistema funcionando sobre tu ecosistema actual, con un caso real de tu sector. La demo no es una presentación — es una sesión donde analizamos tu situación y construimos juntos la propuesta.</p>
+    <form class="cta-form" onsubmit="handleSubmit(event)">
+      <input type="email" id="demo-email" placeholder="tu@empresa.com" required/>
+      <input type="text" placeholder="Nombre" required/>
+      <input type="text" placeholder="Empresa" required/>
+      <button type="submit" class="btn-white">Solicitar demo →</button>
+    </form>
+    <p class="cta-note">Sin compromiso · Sin spam · Respuesta en menos de 24h</p>
+    <div class="cta-guarantees">
+      <div class="cta-guar"><div class="cta-guar-num">30 min</div><div class="cta-guar-text">Demo en vivo sobre tu LMS real, con tu stack, con casos de tu sector</div></div>
+      <div class="cta-guar"><div class="cta-guar-num">&lt;24h</div><div class="cta-guar-text">Tiempo de respuesta garantizado desde que envías tu solicitud</div></div>
+      <div class="cta-guar"><div class="cta-guar-num">0</div><div class="cta-guar-text">Migraciones, disrupciones ni compromisos para ver cómo funciona</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">Smartmind</p>
+        <p class="footer-tagline">El sistema de aprendizaje AI-native para organizaciones que ya tienen LMS y quieren multiplicarlo sin moverlo.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacidad</a>
+        <a href="#">Aviso legal</a>
+        <a href="#">Cookies</a>
+        <a href="mailto:hola@smartmind.com">hola@smartmind.com</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Smartmind. Todos los derechos reservados. Stratoos es una marca de Smartmind.</p>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type=submit]');
+  btn.textContent='¡Enviado! Te contactamos en menos de 24h';
+  btn.style.background='#e8f5ee';
+  btn.style.color='#134d2a';
+  btn.disabled=true;
+}
+</script>
+<script>
+var studioUrls = {
+  'Studio Core': '#studio-core',
+  'Studio Content': '#studio-content',
+  'Studio Design': '#studio-design',
+  'Studio Play': '#studio-play',
+  'Studio Live': '#studio-live',
+  'Studio Mind': '#studio-mind',
+  'Studio Learn': '#studio-learn'
+};
+document.querySelectorAll('.srow').forEach(function(row) {
+  var nameEl = row.querySelector('.srow-name a');
+  if (nameEl) {
+    var name = nameEl.textContent.trim();
+    var url = studioUrls[name];
+    if (url) {
+      row.addEventListener('click', function(e) {
+        if (!e.target.closest('a')) { var el = document.querySelector(url); if(el) el.scrollIntoView({behavior:'smooth'}); }
+      });
+    }
+  }
+});
+</script>
+</body>
+</html>
